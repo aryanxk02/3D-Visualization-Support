@@ -1,7 +1,3 @@
-// import { S3, Credentials } from 'aws-sdk';
-// import { createReadStream } from 'fs';
-// import request from 'request-promise';
-
 const AWS = require('aws-sdk');
 const fs = require('fs');
 const request = require('request-promise');
@@ -25,6 +21,8 @@ async function main(filename) {
             // description: 'See [Wikipedia](https://en.wikipedia.org/?curid=217577).',
             type: '3DTILES',
             options: {
+
+                // specify source type after checking Cesium ION supportable Data Types
                 sourceType: ,
                 clampToTerrain: true,
                 baseTerrainId: 1
@@ -65,7 +63,6 @@ async function main(filename) {
     });
 
     // Step 4 Monitor the tiling process and report when it is finished.
-
     async function waitUntilReady() {
         const assetId = response.assetMetadata.id;
 
@@ -99,5 +96,5 @@ async function main(filename) {
     waitUntilReady();
 }
 
-// export async function main()
+// Exports main function to index.js
 module.exports = main;
