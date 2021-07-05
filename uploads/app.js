@@ -1,10 +1,14 @@
-import { S3, Credentials } from 'aws-sdk';
-import { createReadStream } from 'fs';
-import request from 'request-promise';
+// import { S3, Credentials } from 'aws-sdk';
+// import { createReadStream } from 'fs';
+// import request from 'request-promise';
+
+const AWS = require('aws-sdk');
+const fs = require('fs');
+const request = require('request-promise');
 
 const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxM2RkMjE1Mi1jYTA5LTRhZjktYjEyNy05Y2Y0ODQwNmViZjQiLCJpZCI6NTc0MDEsImlhdCI6MTYyMzY3NjM2OH0.ia5389RCbdz84yY-JIC4FzDwegT5vHoqrtTuboXH5bc';
 
-async function main() {
+async function main(filename) {
 
     // Sample data is already included in this repository, but you can modify the below
     // path to point to any CityGML data you would like to upload.
@@ -21,7 +25,7 @@ async function main() {
             // description: 'See [Wikipedia](https://en.wikipedia.org/?curid=217577).',
             type: '3DTILES',
             options: {
-                sourceType: File_Format,
+                sourceType: ,
                 clampToTerrain: true,
                 baseTerrainId: 1
             }
@@ -95,5 +99,5 @@ async function main() {
     waitUntilReady();
 }
 
-export { main };
 // export async function main()
+module.exports = main;

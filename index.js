@@ -1,8 +1,14 @@
-import {main} from './uploads/app.js';
-import {require} from 'https://requirejs.org/docs/release/2.3.5/minified/require.js';
+// import {require} from 'https://requirejs.org/docs/release/2.3.5/minified/require.js';
+// const mainApp = require('./uploads/app.js')
 const express = require('express')
 const upload = require('express-fileupload')
 const app = express()
+
+const validateFormat = (fileType, File_Format) => {
+    if (fileType==="" && fileFormat==="CityGML"){
+            
+    }
+}
 
 app.use(upload())
 // app.get() : using the get method, user sends a request (req) to the server 
@@ -20,6 +26,12 @@ app.post('/', (req,res) => {
         console.log(req.files)
         var file = req.files.file
         var filename = file.name
+        // console.table(file)
+        // console.log(file)
+        const fileType = file.mimetype
+        console.log(req)
+        const fileFormat = req.body.File_Format
+        
         console.log("Name of the file being uploaded:" + filename)
 
         // path where file is to be uploaded
@@ -29,7 +41,7 @@ app.post('/', (req,res) => {
             }
             else {
                 res.send("File Uploaded Successfuly!")
-                main();
+                mainApp(filename);
             }
         })
     }
