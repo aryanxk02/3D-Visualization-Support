@@ -1,5 +1,5 @@
 import {main} from './uploads/app.js';
-// import {require} from 'https://requirejs.org/docs/release/2.3.5/minified/require.js';
+import {require} from 'https://requirejs.org/docs/release/2.3.5/minified/require.js';
 const express = require('express')
 const upload = require('express-fileupload')
 const app = express()
@@ -28,7 +28,7 @@ app.post('/', (req,res) => {
                 res.send(err)
             }
             else {
-                res.send("File Uploaded")
+                res.send("File Uploaded Successfuly!")
                 main();
             }
         })
@@ -36,3 +36,6 @@ app.post('/', (req,res) => {
 })
 
 app.listen(5500)
+
+
+// Check version dependencies between the files!
