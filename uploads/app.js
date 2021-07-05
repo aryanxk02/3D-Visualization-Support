@@ -1,15 +1,8 @@
-'use strict';
-
-// import { S3, Credentials } from 'aws-sdk';
-// import { createReadStream } from 'fs';
-// import request from 'request-promise';
-
-const AWS = require('aws-sdk');
-const fs = require('fs');
-const request = require('request-promise');
+import { S3, Credentials } from 'aws-sdk';
+import { createReadStream } from 'fs';
+import request from 'request-promise';
 
 const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxM2RkMjE1Mi1jYTA5LTRhZjktYjEyNy05Y2Y0ODQwNmViZjQiLCJpZCI6NTc0MDEsImlhdCI6MTYyMzY3NjM2OH0.ia5389RCbdz84yY-JIC4FzDwegT5vHoqrtTuboXH5bc';
-
 
 async function main() {
 
@@ -17,7 +10,7 @@ async function main() {
     // path to point to any CityGML data you would like to upload.
     const input = filename;
     // Step 1 POST information about the data to /v1/assets
-    console.log('Creating new asset: Reichstag');
+    console.log('Creating new asset:'+filename);
     const response = await request({
         url: 'https://api.cesium.com/v1/assets',
         method: 'POST',
@@ -25,10 +18,10 @@ async function main() {
         json: true,
         body: {
             name: filename,
-            description: 'See [Wikipedia](https://en.wikipedia.org/?curid=217577).',
+            // description: 'See [Wikipedia](https://en.wikipedia.org/?curid=217577).',
             type: '3DTILES',
             options: {
-                sourceType: 'CITYGML',
+                sourceType: File_Format,
                 clampToTerrain: true,
                 baseTerrainId: 1
             }
@@ -36,7 +29,7 @@ async function main() {
     });
 
     // Step 2 Use response.uploadLocation to upoad the file to ion
-    console.log('Asset created. Uploading Reichstag.zip');
+    console.log('Asset created. Uploading'+filename);
     const uploadLocation = response.uploadLocation;
     const s3 = new AWS.S3({
         apiVersion: '2006-03-01',
