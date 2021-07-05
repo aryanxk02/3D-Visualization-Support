@@ -18,7 +18,6 @@ async function main(filename) {
         json: true,
         body: {
             name: filename,
-            // description: 'See [Wikipedia](https://en.wikipedia.org/?curid=217577).',
             type: '3DTILES',
             options: {
 
