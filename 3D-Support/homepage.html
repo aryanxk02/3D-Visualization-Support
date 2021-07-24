@@ -2,61 +2,48 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-
-    <title>3D visualization support</title>
-
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.81/Build/Cesium/Cesium.js"></script>
-    <link href="https://cesium.com/downloads/cesiumjs/releases/1.81/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
-
+  <meta charset="utf-8">
+  <!-- Include the CesiumJS JavaScript and CSS files -->
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.83/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.83/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
 </head>
 
 <body>
+  <div id="cesiumContainer"></div>
+  <script>
 
-    <div id="cesiumContainer"></div>
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmZTQyMzRjNC1kYWM3LTQzMDAtODBkYi1jODFhZmM4OGRlOWMiLCJpZCI6NTc0MDEsImlhdCI6MTYyMjI3ODgxMH0.LcRZ1tHxUfRAs93-adWB6B6wGp1oYwKmcY2FAXF6LNs';
 
-    <div class="backdrop" id="menu">
-        <span><strong>Camera Mode</strong></span>
-        <div class="nowrap">
-            <input id="freeMode" name="source" type="radio" checked />
-            <label for="freeMode">Free</label>
-        </div>
-        <div class="nowrap">
-            <input id="droneMode" name="source" type="radio" />
-            <label for="droneMode">Drone View</label>
-        </div>
-        <br>
-        <span><strong>3d Tile Styling</strong></span>
-        <div class="nowrap">
-            <select id="tileStyle">
-                <option value="none">None</option>
-                <option value="height">Height</option>
-                <option value="transparent">Transparent</option>
-            </select>
-        </div>
-        <br>
-        <span><strong>Display Options</strong></span>
-        <div class="nowrap">
-            <input id="shadows" type="checkbox" />
-            <label for="shadows">Shadows</label>
-        </div>
+    // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+    const viewer = new Cesium.Viewer('cesiumContainer', {
+      terrainProvider: Cesium.createWorldTerrain()
+    });
 
-        <div class="nowrap">
-            <input id="neighborhoods" type="checkbox" checked />
-            <label for="neighborhoods">Neighborhoods</label>
-        </div>
-        <br>
-    </div>
-    <div id="loadingIndicator" class="cover">
-        <div id="loadingIcon" class="loadingIndicator"></div>
-    </div>
+    // Add Cesium OSM Buildings, a global 3D buildings layer.
+    const buildingTileset = viewer.scene.primitives.add(Cesium.createOsmBuildings());
 
-    <!-- Code for loading 3D Tiles -->
+    // Fly the camera to specific location at the given longitude, latitude, and height.
+    viewer.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 400),
+      orientation: {
+        heading: Cesium.Math.toRadians(0.0),
+        pitch: Cesium.Math.toRadians(-15.0),
+      }
+    });
 
+    viewer.terrainProvider = Cesium.createWorldTerrain({
+      requestWaterMask: true,    // required for detailed water effects
+      requestVertexNormals: true // required for detailed terrain lighting
+    });
+
+    // Enable depth testing so things behind the terrain disappear.
+    // This line helps in occluding the objects behind the terrain
+    viewer.scene.globe.depthTestAgainstTerrain = true;
+
+    // Enable lighting based on sun/moon positions - self explanatory
+    viewer.scene.globe.enableLighting = true;
+  </script>
+  </div>
 </body>
 
 </html>
