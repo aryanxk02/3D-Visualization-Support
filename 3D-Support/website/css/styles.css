@@ -1,7 +1,6 @@
 *{
     margin: 0;
     padding: 0;
-    /* font-family: Century Gothic; */
 }
 
 header{
@@ -16,7 +15,6 @@ ul{
     float: right;
     list-style-type: none;
     margin-top: 25px;
-    /* margin-right: 25px; */
 }
 
 /* horizontal alignment of the list */
@@ -54,7 +52,7 @@ ul li a:hover{
 
 /* Alignment from both sides */
 .main{
-    max-width: 1500px;
+    max-width: 1650px;
 }
 
 .title{
@@ -84,4 +82,15 @@ ul li a:hover{
     top: 50%;
     left: 50%;
     transform: translate(-50%, 150%);
+}
+
+.modelImage{
+    /* aligns the cards horizontally */
+    display:inline-block;
+    padding: 50px 10px;
+    transform: translate(50%, 180%);
+}
+
+.modelName h2{
+    transform: translate(33%, 50%);
 }
