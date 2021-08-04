@@ -4,10 +4,15 @@
 }
 
 header{
-    background-color: lightsteelblue;
-    height: 100vh;
+    height: 1200px;
     background-size: cover;
     background-position: center;
+    background-color: lightsteelblue;
+
+}
+
+.parent{
+    background-color: lightsteelblue;
 }
 
 /* our list */
@@ -35,12 +40,6 @@ ul li a:hover{
     background-color: #83c849;
     color: black;
 }
-
-/* Shows the present page from the list items */
-/* ul li.active a{
-    background-color: lightgreen;
-    color: black;
-} */
 
 /* MapMint Logo */
 .logo img{
@@ -84,13 +83,130 @@ ul li a:hover{
     transform: translate(-50%, 150%);
 }
 
-.modelImage{
+.modelImage1{
     /* aligns the cards horizontally */
     display:inline-block;
     padding: 50px 10px;
-    transform: translate(50%, 180%);
+    /* left-right, down-up */
+    transform: translate(-30%, 155%);
 }
 
-.modelName h2{
+.modelImage1:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+
+.modelName1 h2{
+    transform: translate(33%, 50%);
+}
+
+.modelImage2{
+    /* aligns the cards horizontally */
+    display:inline-block;
+    padding: 50px 10px;
+    /* left-right, down-up */
+    transform: translate(-30%, 155%);
+}
+
+.modelImage2:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+
+.modelName2 h2{
+    transform: translate(33%, 50%);
+}
+
+.modelImage3{
+    /* aligns the cards horizontally */
+    display:inline-block;
+    padding: 50px 10px;
+    /* left-right, down-up */
+    transform: translate(268%, 55%);
+}
+
+.modelName3 h2{
+    transform: translate(33%, 50%);
+}
+
+.modelImage3:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+
+.modelImage4{
+    /* aligns the cards horizontally */
+    display:inline-block;
+    padding: 50px 10px;
+    /* left-right, down-up */
+    transform: translate(268%, 55%);
+}
+
+.modelImage4:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+
+.modelName4 h2{
+    transform: translate(33%, 50%);
+}
+
+.modelImage5{
+    /* aligns the cards horizontally */
+    display:inline-block;
+    padding: 50px 10px;
+    /* left-right, down-up */
+    transform: translate(-140%, 155%);
+}
+
+.modelImage5:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+
+.modelName5 h2{
+    transform: translate(33%, 50%);
+}
+
+.modelImage6{
+    /* aligns the cards horizontally */
+    display:inline-block;
+    padding: 50px 10px;
+    /* left-right, down-up */
+    transform: translate(-140%, 155%);
+}
+
+.modelImage6:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+
+.modelName6 h2{
+    transform: translate(33%, 50%);
+}
+
+.modelImage7{
+    /* aligns the cards horizontally */
+    display:inline-block;
+    padding: 50px 10px;
+    /* left-right, down-up */
+    transform: translate(-140%, 155%);
+}
+
+.modelImage7:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+
+.modelName7 h2{
+    transform: translate(33%, 50%);
+}
+
+.modelImage8{
+    /* aligns the cards horizontally */
+    display:inline-block;
+    padding: 50px 10px;
+    /* left-right, down-up */
+    transform: translate(368%, 55%);
+}
+
+.modelImage8:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+
+.modelName8 h2{
     transform: translate(33%, 50%);
 }
