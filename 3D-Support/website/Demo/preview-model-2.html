@@ -1,4 +1,4 @@
-Author : Aryan Kenchappagol | aryan.kenchappagol@gmail.com
+<!-- Author : Aryan Kenchappagol | aryan.kenchappagol@gmail.com -->
 
 <!DOCTYPE html>
 <hmtl>
@@ -17,7 +17,7 @@ Author : Aryan Kenchappagol | aryan.kenchappagol@gmail.com
 
 			// setup
 			var scene = new THREE.Scene();
-			var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+			var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 5, 40000);
 			var renderer = new THREE.WebGLRenderer({ antialias: true });
 
 			// renderer
@@ -26,11 +26,10 @@ Author : Aryan Kenchappagol | aryan.kenchappagol@gmail.com
 
 			// set-model-position
 			camera.position.z = -50;
-			camera.position.x = 0;
-			camera.position.y = -15;
+			camera.position.x = 100;
+			camera.position.y = -50;
 
-			var axesHelper = new THREE.AxesHelper(5);
-			scene.add(axesHelper);
+			// camera.zoom = 90000;
 
 			// user-controls
 			var controls = new OrbitControls(camera, renderer.domElement);
@@ -53,7 +52,7 @@ Author : Aryan Kenchappagol | aryan.kenchappagol@gmail.com
 			scene.add(setLight);
 
 			// set-background-light
-			scene.background = new THREE.Color('rgb(286,247,171)');
+			scene.background = new THREE.Color(0x363025);
 
 			// illuminating-model
 			const colourOne = 0xb1e1ff;
@@ -66,11 +65,15 @@ Author : Aryan Kenchappagol | aryan.kenchappagol@gmail.com
 			);
 			scene.add(light);
 
+			// var mtlLoader = new MTLLoader();
+			// mtlLoader.setTexturePath("./demo-models/model-2/textures")
+
 			// loading-path-for-gltf-format
 			let loader = new GLTFLoader();
 			loader.load('./demo-models/model-2/scene.gltf', function (gltf) {
 				scene.add(gltf.scene);
 			});
+			// loader.path("./demo-models/model-2/scene.bin")
 
 			// animate function to render on scene
 			function animate() {
