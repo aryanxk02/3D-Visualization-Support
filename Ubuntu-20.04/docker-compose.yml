@@ -1,5 +1,18 @@
 version: '3'
 services:
+
+  mapmint3D:
+    image: nginx
+    ports:
+     - 9090:9090
+    volumes:
+      - ./GSoC/homepage.tmpl:/var/www/html/homepage.tmpl
+      - ./mapmint/mapmint-ui/templates/website/demo/preview-model-1.tmpl:/var/www/html/preview-model-1.tmpl
+      - ./mapmint/mapmint-ui/templates/website/demo/preview-model-2.tmpl:/var/www/html/preview-model-2.tmpl
+      - ./mapmint/mapmint-ui/templates/website/demo/preview-model-3.tmpl:/var/www/html/preview-model-3.tmpl
+      - ./mapmint/mapmint-ui/templates/website/demo/preview-model-4.tmpl:/var/www/html/preview-model-4.tmpl
+
+
   zookernel:
     build: .
     image: geolabs/mapmint
@@ -16,10 +29,7 @@ services:
       - ./zoo-project/zoo-services/utils/open-api/static:/var/www/html/static
       - ./mapmint/mapmint-ui/templates/display_3D.tmpl:/mapmint/mapmint-ui/templates/aryan_display.tmpl
       - ./mapmint:/mapmint
-      - ./mapmint/mapmint-ui/templates/website/demo/preview-model-1.tmpl:/mapmint/mapmint-ui/templates/website/demo/preview-model-1.tmpl
-      - ./mapmint/mapmint-ui/templates/website/demo/preview-model-2.tmpl:/mapmint/mapmint-ui/templates/website/demo/preview-model-2.tmpl
-      - ./mapmint/mapmint-ui/templates/website/demo/preview-model-3.tmpl:/mapmint/mapmint-ui/templates/website/demo/preview-model-3.tmpl
-      - ./mapmint/mapmint-ui/templates/website/demo/preview-model-4.tmpl:/mapmint/mapmint-ui/templates/website/demo/preview-model-4.tmpl     
+     
     depends_on:
       - pgbouncer
     environment:
